@@ -4,7 +4,6 @@ package com.paultroger;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.prefs.BackingStoreException;
 import java.util.stream.IntStream;
 
 public class MineSweeper2 {
@@ -92,28 +91,30 @@ public class MineSweeper2 {
             System.out.println("Please choose appropriate coordinates. Do mark a cell, add \"M\".");
             sb.setLength(0);
             sb.append((new Scanner(System.in)).next());
-            sb.append("    ");
             xrp = new int[]{Character.getNumericValue(sb.charAt(0)) , Character.getNumericValue(sb.charAt(1))};
             checkCoordinates = xrp[0] < 1 || xrp[0] > 9 || xrp[1] < 1 || xrp[1] > 9;
             }
         marker[0] = xrp[0]-1;
         marker[1] = xrp[1]-1;
-        token = new Character(sb.charAt(2)).equals('M');
+            token = sb.length() >= 3 && sb.charAt(2) == 'M';
     }
 
     public void setMarker(int[] xrp) {
-        if (new Character(tableTop[xrp[0]][xrp[1]]).equals('B'))
+        if (tableTop[xrp[0]][xrp[1]] == 'B')
             tableTop[xrp[0]][xrp[1]] = 'x';
         else
             tableTop[xrp[0]][xrp[1]] = 'B';
     }
+
+    public void markExplodedMine() {
+                   tableTop[marker[0]][marker[1]] = '!';
+                   }
 
     public void inspectCell(int[] xrp) {
         tableTop[xrp[0]][xrp[1]] = (char)(scan() + '0');
         }
 
     public int scan() {
-        ArrayList<Integer> alist = new ArrayList<Integer>();
         int y = marker[0];
         int x = marker[1];
         int[][] bombRadar = new int[][]{
@@ -126,13 +127,14 @@ public class MineSweeper2 {
             { y+1 , x },
             { y+1 , x+1 },
         };
-
+        int sum = 0;
         for (int[] testArray : bombRadar) {
-            alist.add(count(testArray));
+            sum = sum + count(testArray);
         }
-        int sum = alist.stream().mapToInt(Integer::intValue).sum();
+
         return sum;
     }
+
 
     public int count(int[] xrp) {
         if (xrp[0] < 0 || xrp[0] > 8 || xrp[1] < 0 || xrp[1] > 8)

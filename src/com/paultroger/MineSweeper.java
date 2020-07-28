@@ -15,6 +15,7 @@ import java.util.Scanner;public class MineSweeper {
 
     public static void game() {
         MineSweeper2 spielfeld = new MineSweeper2();
+        spielfeld.initializeTableTop();
         spielfeld.placeBomb();
         round(spielfeld);
     }
@@ -31,14 +32,14 @@ import java.util.Scanner;public class MineSweeper {
             spielfeld1.readNumber();
             if (spielfeld1.token) {
                 spielfeld1.setMarker(spielfeld1.marker);
-//                spielfeld1.displayBackEnd();
+                spielfeld1.displayBackEnd();
                 System.out.println("");
                 spielfeld1.displayTableTop();
             }
             else {
                 spielfeld1.inspectCell(spielfeld1.marker);
                 bombExploded = defuseBomb(spielfeld1);
-//                spielfeld1.displayBackEnd();
+                spielfeld1.displayBackEnd();
                 System.out.println("");
                 spielfeld1.displayTableTop();
             }
@@ -48,6 +49,7 @@ import java.util.Scanner;public class MineSweeper {
     public static boolean defuseBomb(MineSweeper2 spielfeld1) {
         if (spielfeld1.backEnd[spielfeld1.marker[0]][spielfeld1.marker[1]] == 1) {
             System.out.println("BUMM! You're dead!");
+            spielfeld1.markExplodedMine();
             return true;
         }
         else
