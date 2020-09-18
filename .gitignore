@@ -1,0 +1,6 @@
+# Maven Configuration
+pom.xml
+
+# IntelliJ
+target/
+test/
