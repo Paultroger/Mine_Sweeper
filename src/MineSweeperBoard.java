@@ -3,15 +3,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-/* Georg: call class MineSweeperUserPlayBoard.java .
-This class generates a new Game. */
+// I designed this constructor with Georg.
 public class MineSweeperBoard {
     
+    /* David: if you put backEnd and tableTop in seperate classes,
+    designing methods becomes a bit easier: you just need to know,
+    which values to pass to the constructor of an Object, but you
+    don't need to care, how the respective class handles data. */
     private int height, width, difficulty;
     private int[][] backEnd;
     private char[][] tableTop; 
 
     public MineSweeperUserBoard(int height, int width, int difficulty) {
+        /* Local variables should rather not have the exact same
+        name as instance variables. */
         this.height = height;
         this.width = width;
         this.difficulty = difficulty;
@@ -67,7 +72,8 @@ public class MineSweeperBoard {
     }
     
     /* Initializes the BackEnd with a sufficient number of bombs.
-    This method should return a String array at some point. */
+    This method should return a String array at some point.
+    I redesigned this method with Georg and made it shorter. */
     public void placeBomb() {
         int i = 0;
         while (i < difficulty) {

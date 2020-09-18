@@ -15,7 +15,7 @@ are actually not needed for this program. */
     int[] marker = new int[2];
     boolean token;
 
-// a constructor method is not needed for this class.
+    // a constructor method is not needed for this class.
     public MineSweeperRenderer() {
     }
 
