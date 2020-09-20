@@ -8,10 +8,6 @@ import java.util.stream.IntStream;
 // I designed this constructor with Georg.
 public class MineSweeperBoard {
     
-    /* David: if you put backEnd and tableTop in seperate classes,
-    designing methods becomes a bit easier: you just need to know,
-    which values to pass to the constructor of an Object, but you
-    don't need to care, how the respective class handles data. */
     private int height, width, difficulty;
     private int[][] backEnd;
     private char[][] tableTop; 
@@ -39,6 +35,7 @@ public class MineSweeperBoard {
     // This method returns a String containing the Table Top.    
     public String displayTableTop() {
         StringBuilder sb = new StringBuilder().append("    ");
+        StringBuilder sb2 = new StringBuilder();
         String text = "";
         for (int i = 0; i < width; i++) {
             sb.append(i+1).append("   ");
@@ -46,36 +43,38 @@ public class MineSweeperBoard {
         sb.append("\n");
         for (int j = 0; j < height; j ++) {
             sb.append(j+1).append("   ");
-            // If the number has to digit, one space character is removed.
+            // If the number has two digits, one space character is removed.
             if (j > 8)
                 sb.delete(3 , 4);
             for (char value : tableTop[j]) {
                 sb.append(value).append("   ");
             }
-            text = text + "\n" + sb.toString();
+            sb2.append("\n").append(sb);
             sb.setLength(0);
         }
-        return text;
+        return sb2.toString();
     }
 
     // This method returns a String containing the back end. Main purpose is testing.
     public String displayBackEnd() {
         StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
         String text = "";
         for (int i = 0; i < height; i ++) {
             sb.append("   ");
             for (int value : backEnd[i]) {
                 sb.append(value).append("   ");
             }
-            text = text + "\n" + sb.toString();
+            sb2.append("\n").append(sb);
             sb.setLength(0);
         }
-        return text;
+        return sb2.toString();
     }
     
     /* Initializes the BackEnd with a sufficient number of bombs.
-    This method should return a String array at some point.
-    I redesigned this method with Georg and made it shorter. */
+     * This method should return a String array at some point.
+     * I redesigned this method with Georg and made it shorter.
+     */
     public void placeBomb() {
         int i = 0;
         while (i < difficulty) {
