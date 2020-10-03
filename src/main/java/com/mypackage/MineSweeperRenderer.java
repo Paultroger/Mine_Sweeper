@@ -3,22 +3,23 @@
 package com.mypackage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class MineSweeperRenderer {
-/* These are actually Instance variables. They should be integrated into a method at
-some point, because they are not needed at Class level. Instances of the game logic
-are actually not needed for this program. */
 
-
-    int[][] backEnd = new int[heigth][heigth];
+    private int height, width, difficulty;
+    private char[][] tableTop;
     int[] marker = new int[2];
     boolean token;
 
     // a constructor method is not needed for this class.
     public MineSweeperRenderer() {
+        for (int i = 0; i < height; i++) {
+            Arrays.fill(tableTop[i], 'x');
+        }
     }
 
     // This method is an input method to specify a cell on the field.
