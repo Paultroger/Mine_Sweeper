@@ -3,7 +3,7 @@
  * deliberate marks. Those methods are located in the Token class.
  */
 
-public class MineSweeperRenderer {
+public class TableTop {
 
     private char[][] tableTop;
 

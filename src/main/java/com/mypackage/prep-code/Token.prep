@@ -5,14 +5,14 @@ public class Token {
     /* state: total amount of bombs, the number of hidden (not yet inspected)
      * cells and the number of cells marked by the user.
      */
-    state renderer
-    state bomb logic
+    state TableTop
+    state BackEnd
     state int (bombs)
     state int (hidden cells)
     state int (marked cells)
 
     Constructor() {
-        initialize renderer, core logic
+        initialize table top, back end
         welcomeMessage
         ask for board size and set
         ask for difficulty and set
@@ -28,17 +28,17 @@ public class Token {
         verify end condition
     }
 
-    public Renderer validateInput(int[] intArray) {
+    public TableTop validateInput(int[] intArray) {
         validate input
-        return Renderer;
+        return TableTop;
     }
 
     /* Following are the two main methods that the user cares the most about.
      * They hold the main actions of the user. Therefore they are placed
-     * here in the Token class. Both of them return a Renderer object in order
+     * here in the Token class. Both of them return a TableTop object in order
      * to enable method chaining.
      */
-    public Renderer markCell(int[] intArray){
+    public TableTop markCell(int[] intArray){
         switch (symbol) {
             case 'B':   if (tableTop[y][x] == 'B')
                         tableTop[y][x] = 'x';
@@ -49,16 +49,16 @@ public class Token {
                         break;
             default:    break;
         }
-        return Renderer;
+        return TableTop;
     }
 
-    public Renderer inspectCell(int[] intArray) {
+    public TableTop inspectCell(int[] intArray) {
         print question
         create new int[]
         create new StringBuilder
-        int bombs = this.renderer.scan(intArray);
-        change state of renderer
-        return Renderer;
+        int bombs = this.TableTop.scan(intArray);
+        change state of TableTop
+        return TableTop;
     }
 
     // To verify the end condition refer back to BombLogic.
@@ -72,7 +72,7 @@ public class Token {
             return false;
     }
 
-    // Finally two methods to help to correctly initialize Renderer and BombLogic.
+    // Finally two methods to help to correctly initialize TableTop and BombLogic.
     public int boardSize() {
         ask for board size
     }
