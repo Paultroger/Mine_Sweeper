@@ -18,4 +18,19 @@ public class MineSweeperBoardTest {
                 , board1.displayTableTop());
     }
 
+    public String displayBackEnd() {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
+        String text = "";
+        for (int i = 0; i < height; i ++) {
+            sb.append("   ");
+            for (int value : backEnd[i]) {
+                sb.append(value).append("   ");
+            }
+            sb2.append("\n").append(sb);
+            sb.setLength(0);
+        }
+        return sb2.toString();
+    }
+
 }
