@@ -38,6 +38,13 @@ public class InputOutput {
         return int[]
     }
 
+    // Finally two methods to help to correctly initialize TableTop and BombLogic.
+    public int boardSize() {
+        ask for board size
+    }
 
+    public int difficulty() {
+        ask for difficulty
+    }
 
 }
