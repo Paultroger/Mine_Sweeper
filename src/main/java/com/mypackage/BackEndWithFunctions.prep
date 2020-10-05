@@ -1,0 +1,58 @@
+/* This class keeps the state of the 'back end', being a minimalistic version
+ * of a database that holds the positions of the bombs. The methods are mainly
+ * designed to return the position and number of the bombs in a certain area of
+ * of the field.
+*/
+
+public class BackEndWithFunctions {
+    
+    private int[][] backEnd;
+
+    public void setBoardSize(int x) {
+        create integer array backEnd according to board size
+    }
+
+    // This method creates the bomb field.
+    public void difficulty(int x) {
+        int i = 0;
+        while (i < difficulty) {
+            Random rand = new Random();
+            int y = rand.nextInt(height);
+            int x = rand.nextInt(width);
+            if (backEnd[y][x] == 0) {
+                backEnd[y][x] = 1;
+                i++;
+            }
+        }
+    }
+
+    /* Finally, these two methods count the bombs
+     * in a certain area of the field.
+     */
+    public int scan(int y, int x) {
+            { y-1 , x-1 },
+            { y-1 , x   },
+            { y-1 , x+1 },
+            { y   , x-1 },
+            { y   , x+1 },
+            { y+1 , x-1 },
+            { y+1 , x   },
+            { y+1 , x+1 }
+        int sum = 0;
+        for (int[] subIntList : bombRadar) {
+            int = scan (y , x) + '0';
+            check borders with checkBorders()
+            sum = sum + countBombs();
+        }
+        return int;
+    }
+
+    public int checkBorders(int[] xrp) {
+        if (xrp[0] < 0 || xrp[0] > 8 || xrp[1] < 0 || xrp[1] > 8)
+            return 0;
+        else {
+            return backEnd[xrp[0]][xrp[1]];
+        }
+    }
+
+}

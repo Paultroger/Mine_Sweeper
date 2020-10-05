@@ -1,0 +1,21 @@
+public class ResumeGame {
+
+    // state is whether it is the first game (welcome message) or not.
+    state boolean
+
+    emptyConstructor() {
+        state = false;
+    }
+
+    public void welcomeMessage() {
+    }
+
+    public void resumeGame() {
+        String simonSays = "";
+        while (!simonSays.equals("y") && !simonSays.equals("n")) {
+            System.out.println("Please enter \"Y\" or \"N\"");
+            simonSays = new Scanner(System.in).nextLine().toLowerCase();
+        }
+        return simonSays.equals("y");
+    }
+}
