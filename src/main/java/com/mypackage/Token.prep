@@ -1,12 +1,14 @@
 static import com.mypackage.InputOutput.*;
 
+/* This class operates on the table top. Therefore, it has a method to create an instance of TableTop
+ * runGame() and all operations triggered by the player will access this instance via an instance
+ * variable. This class also holds the state 'marked cells' and 'hidden cells' in order to compute
+ * the current score of the game.
+ */
 public class Token {
 
-    /* state: total amount of bombs, the number of hidden (not yet inspected)
-     * cells and the number of cells marked by the user.
-     */
-    state renderer
-    state bomb logic
+    state TableTop
+    state BackEndWithFunctions
     state int (bombs)
     state int (hidden cells)
     state int (marked cells)
