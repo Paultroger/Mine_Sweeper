@@ -12,6 +12,6 @@ public class InputOutput {
 
     public static int difficulty() {
         // ask for difficulty
-        return 0;
+        return 1;
     }
 }
