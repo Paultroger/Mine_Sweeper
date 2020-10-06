@@ -1,3 +1,5 @@
+// This class keeps the game going until the player decides to quit.
+
 public class ResumeGame {
 
     // state is whether it is the first game (welcome message) or not.
