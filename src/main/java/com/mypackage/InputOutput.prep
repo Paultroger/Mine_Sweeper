@@ -1,4 +1,4 @@
-/* This is a utility class for MineSweeperIteration. The most
+/* This is a utility class for Token. The most
  * sophisticated logic here is to convert a char[][] into a String.
  */
 
