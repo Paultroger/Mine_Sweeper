@@ -11,7 +11,11 @@ public class TableTop {
 
     private char[][] myTableTop;
 
-    public void initializeTableTop(int x) {
+    public TableTop() {
+        this(9);
+    }
+
+    public TableTop(int x) {
         myTableTop = new char[x][x];
         for (int i = 0; i < x; i++) {
             Arrays.fill(myTableTop[i], 'x');
