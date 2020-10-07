@@ -10,8 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 public class TokenTest {
 
-    TableTop myTableTop = new TableTop();
-    Token myToken = new Token(9);
+    TableTop myTableTop = new TableTop(8);
+    Token myToken = new Token(8);
 
     @Test
     public void validateTableTop() {

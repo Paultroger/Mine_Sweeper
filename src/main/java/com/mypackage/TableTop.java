@@ -15,9 +15,9 @@ public class TableTop {
         this(9);
     }
 
-    public TableTop(int x) {
-        myTableTop = new char[x][x];
-        for (int i = 0; i < x; i++) {
+    public TableTop(int boardSize) {
+        myTableTop = new char[boardSize][boardSize];
+        for (int i = 0; i < boardSize; i++) {
             Arrays.fill(myTableTop[i], 'x');
         }
     }
