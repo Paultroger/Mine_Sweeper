@@ -3,16 +3,24 @@ package com.mypackage;
 public class GameIterator {
     // state is whether it is the first game (welcome message) or not.
     boolean firstGame = true;
+    InputOutput myIo;
+    TableTop myTT;
+    Token myToken;
 
-    public void gameFlow() {
-        // InputOutput myIo = new InputOutput();
-        // new TableTop
-        // new BackEnd
-        // new InputOutput
+    public GameIterator() {
+        myIo = new InputOutput();
+        myTT= new TableTop();
+        myToken = new Token(9);
+        // instantiate back end
     }
 
-    public static boolean resumeGame() {
-        System.out.println("Would you like to play another round?");
-        return true;
+    public void startGame() {
+        System.out.println("Welcome message.");
+        // ask for board size;
+        // ask for difficulty;
     }
+
+    public void gameRound() {
+    }
+
 }
