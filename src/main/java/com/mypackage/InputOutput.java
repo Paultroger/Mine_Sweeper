@@ -8,21 +8,37 @@ public class InputOutput {
 
     public void placeToken(Token token) {
         System.out.println("Where would you like to place your token?");
-        // if (token.validInput(5 , 5))
-        //     return new int[]{5 , 5}; // new Scanner(System.in).nextInt();
-
-        while (true) {
-            int y = sc.nextInt() - 1;
-            int x = sc.nextInt() - 1;
-            if (token.validInput(y, x))
-                return;
-            else if (y < 0 | x < 0)
-                System.out.println("You chose a negative number or zero. "
-                        + "Please try again.");
-            else
-                System.out.println("One of your coordinates is out of bounds. "
-                        + "Please try again.");
+        int x = setNumber('X');
+        int y = setNumber('Y');
+        if (token.validToken(x) & token.validToken(y))
+            token.setToken(new int[]{y , x});
+        else {
+            System.out.print("Your coordinate(s) is/are out of bound. ");
+            placeToken(token);
         }
+    }
+
+    private int setNumber(char coordinate) {
+        System.out.print("Coordinate " + coordinate + ": ");
+        while (true) {
+            int placeHolder = sc.nextInt() - 1;
+            if (positiveInt(placeHolder, coordinate))
+                return placeHolder;
+        }
+    }
+
+    private boolean positiveInt(int integer, char coordinate) {
+        if (integer < 0) {
+            System.out.print("You chose a negative number or zero. "
+                    + "Please try again.\nCoordinate " + coordinate + ": ");
+            return false;
+        }
+        return true;
+    }
+
+    private char setChar() {
+        System.out.println("Action: (M for mark, X for defuse)");
+        return sc.next().charAt(0);
     }
 
     public int boardSize() {
@@ -40,7 +56,7 @@ public class InputOutput {
         return true;
     }
 
-    public static String printBoard(char[][] board) {
+    public String printBoard(char[][] board) {
         StringBuilder sb = new StringBuilder().append("    ");
         StringBuilder sb2 = new StringBuilder();
         String text = "";

@@ -12,11 +12,17 @@ public class TokenTest {
 
     TableTop myTableTop = new TableTop(8);
     Token myToken = new Token(8);
+    InputOutput myIO = new InputOutput();
 
-    @Test
     public void validateTableTop() {
-        new InputOutput().placeToken(myToken);
+        myIO.placeToken(myToken);
+        myTableTop.markCell(myToken.getToken());
         System.out.println(new InputOutput().printBoard(myTableTop.getTableTop()));
+    }
+
+    public static void main(String... kong) {
+        TokenTest tt = new TokenTest();
+        tt.validateTableTop();
     }
 }
 

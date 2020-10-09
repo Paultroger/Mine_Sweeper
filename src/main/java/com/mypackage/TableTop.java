@@ -22,6 +22,10 @@ public class TableTop {
         }
     }
 
+    public void markCell(int[] intArray) {
+        myTableTop[intArray[0]][intArray[1]] = 'B';
+    }
+
     public char[][] getTableTop() {
         return myTableTop;
     }

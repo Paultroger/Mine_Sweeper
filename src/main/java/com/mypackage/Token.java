@@ -10,7 +10,10 @@ public class Token {
     private int hiddenCells;
     private int markedCells;
     private final int boardSize;
+
+
     private int[] token = new int[2];
+    private char character;
     InputOutput newInputOutput = new InputOutput();
 
     public Token(int boardSize) {
@@ -18,16 +21,19 @@ public class Token {
         this.boardSize = boardSize;
     }
 
-    public boolean validInput(int y, int x) {
-        if (y < 0 | y > boardSize)
-            return false;
+    public boolean validToken(int placeHolder) {
+        return placeHolder < boardSize;
+    }
+
+    public void setToken(int[] token) throws IndexOutOfBoundsException {
+        if (token[0] < boardSize & token[1] < boardSize)
+            this.token = token;
         else
-            token[0] = y;
-        if (x < 0 | x > boardSize)
-            return false;
-        else
-            token[1] = x;
-        return true;
+            throw new IndexOutOfBoundsException();
+    }
+
+    public int[] getToken() {
+        return token;
     }
 
 }
