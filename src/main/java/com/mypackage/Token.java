@@ -26,7 +26,7 @@ public class Token {
     }
 
     public void setToken(int[] token) throws IndexOutOfBoundsException {
-        if (token[0] < boardSize & token[1] < boardSize)
+        if (token[0] < boardSize && token[1] < boardSize)
             this.token = token;
         else
             throw new IndexOutOfBoundsException();

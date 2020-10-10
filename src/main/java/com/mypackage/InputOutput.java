@@ -6,15 +6,15 @@ public class InputOutput {
 
     Scanner sc = new Scanner(System.in);
 
-    public void placeToken(Token token) {
+    public void navigateToken(Token token) {
         System.out.println("Where would you like to place your token?");
         int x = setNumber('X');
         int y = setNumber('Y');
-        if (token.validToken(x) & token.validToken(y))
+        if (token.validToken(x) && token.validToken(y))
             token.setToken(new int[]{y , x});
         else {
             System.out.print("Your coordinate(s) is/are out of bound. ");
-            placeToken(token);
+            navigateToken(token);
         }
     }
 
@@ -36,9 +36,9 @@ public class InputOutput {
         return true;
     }
 
-    private char setChar() {
-        System.out.println("Action: (M for mark, X for defuse)");
-        return sc.next().charAt(0);
+    public char setChar() {
+        System.out.println("Action (B for mark bomb, X for defuse) : ");
+        return Character.toLowerCase(sc.next().charAt(0));
     }
 
     public int boardSize() {

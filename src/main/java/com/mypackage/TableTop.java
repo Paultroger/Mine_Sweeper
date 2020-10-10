@@ -9,25 +9,33 @@ import java.util.Arrays;
 
 public class TableTop {
 
-    private char[][] myTableTop;
+    private final char[][] tableTop;
 
     public TableTop() {
-        this(9);
+        this(8);
     }
 
     public TableTop(int boardSize) {
-        myTableTop = new char[boardSize][boardSize];
+        tableTop = new char[boardSize][boardSize];
         for (int i = 0; i < boardSize; i++) {
-            Arrays.fill(myTableTop[i], 'x');
+            Arrays.fill(tableTop[i], 'x');
         }
     }
 
     public void markCell(int[] intArray) {
-        myTableTop[intArray[0]][intArray[1]] = 'B';
+        tableTop[intArray[0]][intArray[1]] = 'B';
+    }
+
+    public void defuseBomb(BackEndWithFunctions backEnd, int[] intArray) {
+        tableTop[intArray[0]][intArray[0]] = (char) (backEnd.scan(intArray) + '0');
     }
 
     public char[][] getTableTop() {
-        return myTableTop;
+        return tableTop;
+    }
+
+    public void markExplodedCell(int[] intArray) {
+        tableTop[intArray[0]][intArray[1]] = '!';
     }
 
 }
