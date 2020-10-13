@@ -55,22 +55,15 @@ public class BackEndWithFunctions {
     public int scan(int[] intArray) {
         int y = intArray[0];
         int x = intArray[1];
-        int[][] bombRadar = new int[][]{
-                {y - 1, x - 1},
-                {y - 1, x},
-                {y - 1, x + 1},
-                {y, x - 1},
-                {y, x + 1},
-                {y + 1, x - 1},
-                {y + 1, x},
-                {y + 1, x + 1}
-        };
+        int[] array1 = {-1, -1, -1, 0, 0, 0, 1, 1, 1};
+        int[] array2 = {-1, 0, 1, -1, 0, 1, -1, 0, 1};
         int sum = 0;
-        for (int[] subIntList : bombRadar) {
-            if (validCell(subIntList))
-                sum = sum + returnValue(subIntList);
+        for (int i = 0; i < 9; i++) {
+            int[] z = {y + array1[i], x + array2[i]};
+            if (validCell(z))
+                sum = sum + returnValue(z);
         }
-        return sum;
+        return sum - returnValue(intArray);
     }
 
     public boolean validCell(int[] xrp) {

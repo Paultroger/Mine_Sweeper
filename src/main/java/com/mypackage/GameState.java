@@ -1,13 +1,16 @@
 package com.mypackage;
 
-public class GameIterator {
+public class GameState {
     // state is whether it is the first game (welcome message) or not.
     boolean firstGame = true;
     InputOutput myIo;
     TableTop myTT;
     Token myToken;
+    int bombs;
+    int hiddenCells;
+    int markedCells;
 
-    public GameIterator() {
+    public GameState() {
         myIo = new InputOutput();
         myTT= new TableTop();
         myToken = new Token(9);
