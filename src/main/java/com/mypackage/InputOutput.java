@@ -47,7 +47,7 @@ public class InputOutput {
     }
 
     public int difficulty() {
-        // ask for difficulty
+        // ask for placeBombs
         return 1;
     }
 

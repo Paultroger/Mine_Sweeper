@@ -6,8 +6,6 @@ package com.mypackage;
  * of the field.
  */
 
-import com.sun.source.tree.BreakTree;
-
 import java.util.Arrays;
 import java.util.Random;
 
@@ -17,7 +15,7 @@ public class BackEndWithFunctions {
     private int difficulty;
     private int boardSize;
 
-    public BackEndWithFunctions() {
+    public BackEndWithFunctions(){
         this(8, 40);
     }
 
@@ -28,7 +26,7 @@ public class BackEndWithFunctions {
         for (int i = 0; i < boardSize; i++) {
             Arrays.fill(backEnd[i], 0);
         }
-        difficulty();
+        placeBombs();
     }
 
     public int[][] getBackEnd() {
@@ -36,7 +34,7 @@ public class BackEndWithFunctions {
     }
 
     // This method creates the bomb field.
-    public void difficulty() {
+    public void placeBombs() {
         int i = 0;
         while (i < difficulty) {
             Random rand = new Random();
