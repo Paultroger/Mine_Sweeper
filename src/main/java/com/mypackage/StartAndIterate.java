@@ -11,7 +11,7 @@ public class StartAndIterate {
 
     public StartAndIterate() {
         myIo = new InputOutput();
-        myBE = new BackEndWithFunctions();
+        // myBE = new BackEndWithFunctions();
         myTT = new TableTop();
         // instantiate back end
     }
