@@ -27,7 +27,7 @@ public class TableTop {
     }
 
     public void defuseBomb(BackEndWithFunctions backEnd, int[] intArray) {
-        tableTop[intArray[0]][intArray[0]] = (char) (backEnd.scan(intArray) + '0');
+        tableTop[intArray[0]][intArray[1]] = (char) (backEnd.scan(intArray) + '0');
     }
 
     public char[][] getTableTop() {

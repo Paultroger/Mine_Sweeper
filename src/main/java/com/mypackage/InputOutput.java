@@ -6,19 +6,19 @@ public class InputOutput {
 
     Scanner sc = new Scanner(System.in);
 
-    public void navigateToken(Token token) {
+    public int[] placeToken(int boardSize) {
         System.out.println("Where would you like to place your token?");
-        int x = setNumber('X');
-        int y = setNumber('Y');
-        if (token.validToken(x) && token.validToken(y))
-            token.setToken(new int[]{y , x});
-        else {
+        int x = askForInt('X');
+        int y = askForInt('Y');
+        while (x >= boardSize || y >= boardSize) {
             System.out.print("Your coordinate(s) is/are out of bound. ");
-            navigateToken(token);
+            x = askForInt('X');
+            y = askForInt('Y');
         }
+        return new int[]{y, x};
     }
 
-    private int setNumber(char coordinate) {
+    private int askForInt(char coordinate) {
         System.out.print("Coordinate " + coordinate + ": ");
         while (true) {
             int placeHolder = sc.nextInt() - 1;
