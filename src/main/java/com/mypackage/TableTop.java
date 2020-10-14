@@ -26,16 +26,15 @@ public class TableTop {
         tableTop[intArray[0]][intArray[1]] = 'B';
     }
 
-    public void defuseBomb(BackEndWithFunctions backEnd, int[] intArray) {
-        tableTop[intArray[0]][intArray[1]] = (char) (backEnd.scan(intArray) + '0');
+    public void checkForBomb(BackEndWithFunctions backEnd, int[] intArray) {
+        if (backEnd.bombExploded(intArray))
+            tableTop[intArray[0]][intArray[1]] = '!';
+        else
+            tableTop[intArray[0]][intArray[1]] = (char) (backEnd.scan(intArray) + '0');
     }
 
     public char[][] getTableTop() {
         return tableTop;
-    }
-
-    public void markExplodedCell(int[] intArray) {
-        tableTop[intArray[0]][intArray[1]] = '!';
     }
 
 }

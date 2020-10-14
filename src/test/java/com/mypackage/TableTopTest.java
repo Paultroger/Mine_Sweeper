@@ -4,12 +4,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
-import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collection;
-
 import static org.mockito.Mockito.*;
 
 @RunWith(Parameterized.class)
@@ -75,12 +72,12 @@ public class TableTopTest {
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', '2'}
                 }},
-                {new int[]{4, 6}, new char[][]{
+                {new int[]{4, 5}, new char[][]{
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-                        {'x', 'x', 'x', 'x', 'x', 'x', '4', 'x'},
+                        {'x', 'x', 'x', 'x', 'x', '!', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
@@ -93,9 +90,9 @@ public class TableTopTest {
 
     @Test
     public void defuseBomb() {
-        myTableTop.defuseBomb(myBE, token);
-        System.out.println(new InputOutput().printBoard(myTableTop.getTableTop()));
-        assertEquals(this.expectedTableTop, myTableTop.getTableTop());
+        myTableTop.checkForBomb(myBE, token);
+        // System.out.println(new InputOutput().printBoard(myTableTop.getTableTop()));
+        assertArrayEquals(this.expectedTableTop, myTableTop.getTableTop());
     }
 
     public void markCell() {

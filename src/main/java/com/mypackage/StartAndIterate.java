@@ -23,13 +23,12 @@ public class StartAndIterate {
     }
 
     public void defuseBomb() {
-        myTT.markExplodedCell(token);
         myBE.bombExploded(token);
         System.out.println("You lost.");
     }
 
     public void marcCell() {
-        myTT.defuseBomb(myBE, token);
+        myTT.checkForBomb(myBE, token);
         System.out.println(new InputOutput().printBoard(myTT.getTableTop()));
     }
 }
