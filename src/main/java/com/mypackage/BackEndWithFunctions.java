@@ -39,13 +39,13 @@ public class BackEndWithFunctions {
 
     // Checks the cells surrounding a specific cell.
     public int scan(Point coordinates) {
-        int y = coordinates.y;
         int x = coordinates.x;
+        int y = coordinates.y;
         int[] array1 = {-1, -1, -1, 0, 0, 0, 1, 1, 1};
         int[] array2 = {-1, 0, 1, -1, 0, 1, -1, 0, 1};
         int sum = 0;
         for (int i = 0; i < boardSize; i++) {
-            Point z = new Point(y + array1[i], x + array2[i]);
+            Point z = new Point(x + array1[i], y + array2[i]);
             if (validCell(z))
                 sum = sum + returnValue(z);
         }
@@ -59,12 +59,12 @@ public class BackEndWithFunctions {
 
     // Return the value of a cell.
     private int returnValue(Point coordinates) {
-        return backEnd[coordinates.y][coordinates.x];
+        return backEnd[coordinates.x][coordinates.y];
     }
 
     // Check, if a cell holds a bomb.
     public boolean bombExploded(Point coordinates) {
-        return backEnd[coordinates.y][coordinates.x] != 0;
+        return backEnd[coordinates.x][coordinates.y] != 0;
     }
 
 }

@@ -24,14 +24,14 @@ public class TableTop {
     }
 
     public void markCell(Point coordinates) {
-        tableTop[coordinates.y][coordinates.x] = 'B';
+        tableTop[coordinates.x][coordinates.y] = 'B';
     }
 
     public void checkForBomb(BackEndWithFunctions backEnd, Point coordinates) {
         if (backEnd.bombExploded(coordinates))
-            tableTop[coordinates.y][coordinates.x] = '!';
+            tableTop[coordinates.x][coordinates.y] = '!';
         else
-            tableTop[coordinates.y][coordinates.x] = (char) (backEnd.scan(coordinates) + '0');
+            tableTop[coordinates.x][coordinates.y] = (char) (backEnd.scan(coordinates) + '0');
     }
 
     public char[][] getTableTop() {
