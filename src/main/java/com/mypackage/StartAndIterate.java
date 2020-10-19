@@ -1,9 +1,11 @@
 package com.mypackage;
 
+import java.awt.*;
+
 public class StartAndIterate {
     // state is whether it is the first game (welcome message) or not.
     private int bombs, hiddenCells, markedCells, boardSize;
-    private int[] token;
+    private Point token;
     private boolean firstGame = true;
     private InputOutput myIo;
     private BackEndWithFunctions myBE;

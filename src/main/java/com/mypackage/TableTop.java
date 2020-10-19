@@ -1,5 +1,6 @@
 package com.mypackage;
 
+import java.awt.*;
 import java.util.Arrays;
 
 /* This class holds the state of the visible part of the game, which is
@@ -22,15 +23,15 @@ public class TableTop {
         }
     }
 
-    public void markCell(int[] intArray) {
-        tableTop[intArray[0]][intArray[1]] = 'B';
+    public void markCell(Point coordinates) {
+        tableTop[coordinates.y][coordinates.x] = 'B';
     }
 
-    public void checkForBomb(BackEndWithFunctions backEnd, int[] intArray) {
-        if (backEnd.bombExploded(intArray))
-            tableTop[intArray[0]][intArray[1]] = '!';
+    public void checkForBomb(BackEndWithFunctions backEnd, Point coordinates) {
+        if (backEnd.bombExploded(coordinates))
+            tableTop[coordinates.y][coordinates.x] = '!';
         else
-            tableTop[intArray[0]][intArray[1]] = (char) (backEnd.scan(intArray) + '0');
+            tableTop[coordinates.y][coordinates.x] = (char) (backEnd.scan(coordinates) + '0');
     }
 
     public char[][] getTableTop() {

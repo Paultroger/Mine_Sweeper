@@ -6,7 +6,7 @@ package com.mypackage;
  * of the field.
  */
 
-import java.util.Arrays;
+import java.awt.*;
 import java.util.Random;
 
 public class BackEndWithFunctions {
@@ -38,33 +38,33 @@ public class BackEndWithFunctions {
     }
 
     // Checks the cells surrounding a specific cell.
-    public int scan(int[] intArray) {
-        int y = intArray[0];
-        int x = intArray[1];
+    public int scan(Point coordinates) {
+        int y = coordinates.y;
+        int x = coordinates.x;
         int[] array1 = {-1, -1, -1, 0, 0, 0, 1, 1, 1};
         int[] array2 = {-1, 0, 1, -1, 0, 1, -1, 0, 1};
         int sum = 0;
         for (int i = 0; i < boardSize; i++) {
-            int[] z = {y + array1[i], x + array2[i]};
+            Point z = new Point(y + array1[i], x + array2[i]);
             if (validCell(z))
                 sum = sum + returnValue(z);
         }
-        return sum - returnValue(intArray);
+        return sum - returnValue(coordinates);
     }
 
     // Check, if coordinate is within bounds.
-    public boolean validCell(int[] xrp) {
-        return (xrp[0] >= 0 && xrp[0] < boardSize && xrp[1] >= 0 && xrp[1] < boardSize);
+    public boolean validCell(Point coordinates) {
+        return (coordinates.x >= 0 && coordinates.x < boardSize && coordinates.y >= 0 && coordinates.y < boardSize);
     }
 
     // Return the value of a cell.
-    private int returnValue(int[] xrp) {
-        return backEnd[xrp[0]][xrp[1]];
+    private int returnValue(Point coordinates) {
+        return backEnd[coordinates.y][coordinates.x];
     }
 
     // Check, if a cell holds a bomb.
-    public boolean bombExploded(int[] intArray) {
-        return backEnd[intArray[1]][intArray[1]] != 0;
+    public boolean bombExploded(Point coordinates) {
+        return backEnd[coordinates.y][coordinates.x] != 0;
     }
 
 }
