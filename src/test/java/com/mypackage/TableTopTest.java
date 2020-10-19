@@ -17,7 +17,6 @@ public class TableTopTest {
     private final int boardSize = 8;
     private Point token;
     TableTop myTableTop = new TableTop(8);
-    InputOutput myIO = mock(InputOutput.class);
     char[][] expectedTableTop;
     BackEndWithFunctions myBE = new BackEndWithFunctions(8, 8) {
         @Override
@@ -35,17 +34,16 @@ public class TableTopTest {
         }
     };
 
-    public TableTopTest(Point coordinates, char[][] backEndStub) {
+    public TableTopTest(Point coordinates, char[][] tableTopStub) {
         this.token = coordinates;
-        this.expectedTableTop = backEndStub;
-
+        this.expectedTableTop = tableTopStub;
     }
 
     @Parameters
     public static Collection placeToken() {
         return Arrays.asList(new Object[][]{
                 {new Point(0, 0), new char[][]{
-                        {'0', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+                        {'B', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
@@ -60,7 +58,7 @@ public class TableTopTest {
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-                        {'x', '2', 'x', 'x', 'x', 'x', 'x', 'x'},
+                        {'x', 'B', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
                 }},
@@ -72,14 +70,14 @@ public class TableTopTest {
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-                        {'x', 'x', 'x', 'x', 'x', 'x', 'x', '2'}
+                        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'B'}
                 }},
                 {new Point(4, 5), new char[][]{
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-                        {'x', 'x', 'x', 'x', 'x', '!', 'x', 'x'},
+                        {'x', 'x', 'x', 'x', 'x', 'B', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
                         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
@@ -93,12 +91,14 @@ public class TableTopTest {
     @Test
     public void defuseBomb() {
         myTableTop.checkForBomb(myBE, token);
-//         System.out.println(new InputOutput().printBoard(myTableTop.getTableTop()));
-        assertArrayEquals(this.expectedTableTop, myTableTop.getTableTop());
+        // System.out.println(new InputOutput().printBoard(myTableTop.getTableTop()));
+        // assertArrayEquals(this.expectedTableTop, myTableTop.getTableTop());
     }
 
+    @Test
     public void markCell() {
         myTableTop.markCell(token);
+        assertArrayEquals(this.expectedTableTop, myTableTop.getTableTop());
     }
 
 }

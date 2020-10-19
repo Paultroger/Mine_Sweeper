@@ -29,7 +29,7 @@ public class StartAndIterate {
         System.out.println("You lost.");
     }
 
-    public void marcCell() {
+    public void markCell() {
         myTT.checkForBomb(myBE, token);
         System.out.println(new InputOutput().printBoard(myTT.getTableTop()));
     }

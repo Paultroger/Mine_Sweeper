@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /* This class holds the state of the visible part of the game, which is
  * a subset of the backend. It can be amended by the player with some additional,
- * deliberate marks. Those methods are located in the Token class.
+ * deliberate marks.
  */
 
 public class TableTop {
